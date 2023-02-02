@@ -26,18 +26,18 @@ public class Member extends BaseEntity implements UserDetails {
     private String email;
 
     @Column(nullable = false)
-    transient private String password;
+    private String password;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private MemberRole userRole;
+    private MemberRole memberRole;
 
     @Builder
-    public Member(String email, String password, String name,  MemberRole userRole) {
+    public Member(String email, String password, String name,  MemberRole memberRole) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.userRole = userRole;
+        this.memberRole = memberRole;
     }
 
     public Member update(String name, String password) {
@@ -47,7 +47,7 @@ public class Member extends BaseEntity implements UserDetails {
     }
 
     public String getRoleKey() {
-        return this.userRole.getKey();
+        return this.memberRole.getKey();
     }
 
     @Override

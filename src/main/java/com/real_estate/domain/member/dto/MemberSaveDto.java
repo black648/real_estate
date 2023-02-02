@@ -12,14 +12,14 @@ public class MemberSaveDto {
     private String email;
     private String password;
     private String name;
-    private MemberRole userRole;
+    private MemberRole memberRole;
 
-    @Builder
-    public MemberSaveDto(String email, String password, String name, MemberRole userRole) {
+    @Builder(toBuilder = true)
+    public MemberSaveDto(String email, String password, String name, MemberRole memberRole) {
         this.email = email;
         this.password = password;
         this.name = name;
-        this.userRole = userRole;
+        this.memberRole = memberRole;
     }
 
     public Member toEntity() {
@@ -27,7 +27,7 @@ public class MemberSaveDto {
                 .email(email)
                 .password(password)
                 .name(name)
-                .userRole(userRole)
+                .memberRole(memberRole)
                 .build();
     }
 }
