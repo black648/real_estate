@@ -1,9 +1,10 @@
 package com.real_estate.domain.room.domain;
 
 import com.real_estate.domain.BaseEntity;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.springframework.data.geo.Point;
+import org.locationtech.jts.geom.Point;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -51,4 +52,16 @@ public class Room extends BaseEntity {
     //삭제일
     @Column
     private LocalDate deletedDate;
+
+    @Builder
+    public Room(String name, Long memberId, String address, String addressInfo, Point location, String roomCd, String status, LocalDate deletedDate) {
+        this.name = name;
+        this.memberId = memberId;
+        Address = address;
+        AddressInfo = addressInfo;
+        this.location = location;
+        this.roomCd = roomCd;
+        this.status = status;
+        this.deletedDate = deletedDate;
+    }
 }
