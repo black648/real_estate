@@ -7,6 +7,8 @@ import org.springframework.data.geo.Point;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -16,6 +18,9 @@ public class Room extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
+    private final List<RoomDeal> codeList = new ArrayList<>();
 
     @Column(nullable = false)
     private String name;

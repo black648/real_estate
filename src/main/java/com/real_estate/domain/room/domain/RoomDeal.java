@@ -17,6 +17,10 @@ public class RoomDeal extends BaseEntity {
     private Long id;
 
     //Room ID
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "roomId", insertable = false, updatable = false)
+    private Room room;
+
     @Column(nullable = false)
     private Long roomId;
 
