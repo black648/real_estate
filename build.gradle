@@ -25,7 +25,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-redis'
 
     implementation 'io.jsonwebtoken:jjwt:0.9.1'
-
+    implementation 'org.hibernate:hibernate-spatial:5.6.14.Final'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     runtimeOnly 'com.h2database:h2'
 
@@ -39,8 +39,21 @@ dependencies {
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     annotationProcessor "com.querydsl:querydsl-apt:${queryDslVersion}"
 
-
+    implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
+    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
 }
+
+// log4j2 의존성을 추가해주고, spring-boot-starter-logging을 제외시켜주어야 한다.
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+    all {
+        //logback과의 충돌 방지
+        exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+    }
+}
+
 
 tasks.named('test') {
     useJUnitPlatform()
