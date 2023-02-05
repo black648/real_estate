@@ -1,6 +1,9 @@
 package com.real_estate.domain.room.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.real_estate.domain.BaseEntity;
+import com.real_estate.domain.room.dto.RoomDealUpdateDto;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -17,6 +20,7 @@ public class RoomDeal extends BaseEntity {
     private Long id;
 
     //Room ID
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "roomId", insertable = false, updatable = false)
     private Room room;
@@ -39,4 +43,19 @@ public class RoomDeal extends BaseEntity {
     //삭제일
     @Column
     private LocalDate deletedDate;
+
+    @Builder
+    public RoomDeal(Long roomId, Long deposit, Long rentalFee, String dealCd, LocalDate deletedDate) {
+        this.roomId = roomId;
+        this.deposit = deposit;
+        this.rentalFee = rentalFee;
+        this.dealCd = dealCd;
+        this.deletedDate = deletedDate;
+    }
+
+    public void update(RoomDealUpdateDto updateDto) {
+        this.deposit = updateDto.getDeposit();
+        this.rentalFee = updateDto.getRentalFee();
+        this.dealCd = updateDto.getDealCd();
+    }
 }

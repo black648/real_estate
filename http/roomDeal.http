@@ -1,0 +1,23 @@
+### save
+POST http://localhost:8080/roomDeal/save
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+{
+  "roomId": 6,
+  "dealCd": "R001001",
+  "deposit": 1000,
+  "rentalFee": 50
+}
+
+### update
+PUT http://localhost:8080/roomDeal/update
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+{
+  "id": 4,
+  "dealCd":"R001002",
+  "deposit":1200,
+  "rentalFee":70
+}
