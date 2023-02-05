@@ -40,7 +40,7 @@ public class TokenProvider {
 
     //JWT 토큰 생성
     public String createToken(Member member) {
-        Claims claims = Jwts.claims().setSubject(member.getName());
+        Claims claims = Jwts.claims().setSubject(member.getEmail());
         claims.put("memberRole", member.getMemberRole());
         Date now = new Date();
 

@@ -37,11 +37,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .authorizeRequests()
-                    .antMatchers("/login", "/join/**", "/error/**").permitAll()
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/member/**").hasRole("USER")
-                    .anyRequest().authenticated()
+                    .authorizeRequests()
+                        .antMatchers("/login/**", "/join/**", "/error/**").permitAll()
+                        .antMatchers("/admin/**").hasRole("ADMIN")
+                        .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new AuthenticationFilter(tokenProvider), UsernamePasswordAuthenticationFilter.class);
     }
