@@ -1,0 +1,31 @@
+### save
+POST http://localhost:8080/room/save
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+{
+  "name" : "삼성역 도보 5분거리 깨끗한 원룸",
+  "memberId" : 3,
+  "address" : "서울특별시 강남구 영동대로 513 (삼성동)",
+  "addressInfo" : "111-1",
+  "longitude" : 37.51148310935,
+  "latitude" : 127.06033711446,
+  "roomCd" : "R00101",
+  "status" : "Y"
+}
+
+### update
+PUT http://localhost:8080/room/update
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+{
+  "id": 1,
+  "name" : "삼성역 도보 3분거리 깨끗한 원룸",
+  "address" : "서울특별시 강남구 영동대로 510 (삼성동)",
+  "addressInfo" : "111-1",
+  "longitude" : 38.51148310935,
+  "latitude" : 126.06033711446,
+  "roomCd" : "R00101",
+  "status" : "Y"
+}

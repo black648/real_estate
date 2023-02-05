@@ -1,6 +1,8 @@
 package com.real_estate.domain.room.domain;
 
 import com.real_estate.domain.BaseEntity;
+import com.real_estate.domain.room.dto.RoomUpdateDto;
+import com.real_estate.global.utils.CommonUtil;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,11 +33,11 @@ public class Room extends BaseEntity {
 
     //기본주소
     @Column(nullable = false)
-    private String Address;
+    private String address;
 
     //상세주소
     @Column(nullable = false)
-    private String AddressInfo;
+    private String addressInfo;
 
     //위치정보
     @Column(nullable = false, columnDefinition = "GEOMETRY")
@@ -57,11 +59,20 @@ public class Room extends BaseEntity {
     public Room(String name, Long memberId, String address, String addressInfo, Point location, String roomCd, String status, LocalDate deletedDate) {
         this.name = name;
         this.memberId = memberId;
-        Address = address;
-        AddressInfo = addressInfo;
+        this.address = address;
+        this.addressInfo = addressInfo;
         this.location = location;
         this.roomCd = roomCd;
         this.status = status;
         this.deletedDate = deletedDate;
+    }
+
+    public void update(RoomUpdateDto updateDto) {
+        this.name = updateDto.getName();
+        this.address = updateDto.getAddress();
+        this.addressInfo = updateDto.getAddressInfo();
+        this.location = CommonUtil.getLocation(updateDto.getLongitude(), updateDto.getLatitude());
+        this.roomCd = updateDto.getRoomCd();
+        this.status = updateDto.getStatus();
     }
 }
