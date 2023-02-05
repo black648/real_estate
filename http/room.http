@@ -36,6 +36,15 @@ Content-Type: application/json
 X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
 
 ### get
-POST http://localhost:8080/room/get/2
+POST http://localhost:8080/room/get/10
 Content-Type: application/json
 X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+### getList
+POST http://localhost:8080/room/getList
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+{
+  "memberId" : 3
+}

@@ -1,0 +1,51 @@
+package com.real_estate.global.utils;
+
+import com.querydsl.core.types.Order;
+import com.querydsl.core.types.OrderSpecifier;
+import com.querydsl.core.types.dsl.*;
+import org.springframework.data.domain.Sort;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class QueryDslUtil {
+    public static BooleanExpression equals(String str, StringPath path) {
+        return str != null ? path.eq(str) : null;
+    }
+
+    public static BooleanExpression in(String[] str, StringPath path) {
+        return str != null ? path.in(str) : null;
+    }
+
+    public static BooleanExpression equalsInt(int num, NumberPath path) {
+        return num != 0 ? path.eq(num) : null;
+    }
+
+    public static BooleanExpression equalsLong(Long num, NumberPath path) {
+        return num != null && num != 0 ? path.eq(num) : null;
+    }
+
+    public static BooleanExpression like(String str, StringPath path) {
+        return str != null ? path.like(str) : null;
+    }
+
+    public static BooleanExpression before(String str, DateTimePath<LocalDateTime> path) {
+        return str != null ? path.before(LocalDateTime.parse(str)) : null;
+    }
+
+    public static BooleanExpression after(String str, DateTimePath<LocalDateTime> path) {
+        return str != null ? path.after(LocalDateTime.parse(str)) : null;
+    }
+
+    public static List<OrderSpecifier> getOrderSpecifier(Sort sort, PathBuilder pathBuilder) {
+        List<OrderSpecifier> orders = new ArrayList<>();
+        // Sort
+        sort.stream().forEach(order -> {
+            Order direction = order.isAscending() ? Order.ASC : Order.DESC;
+            String prop = order.getProperty();
+            orders.add(new OrderSpecifier(direction, pathBuilder.get(prop)));
+        });
+        return orders;
+    }
+}

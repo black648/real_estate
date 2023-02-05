@@ -40,7 +40,7 @@ class RoomServiceTest {
         assertThat(list.get(0).getId()).isEqualTo(roomId);
     }
 
-    @DisplayName("[단위테스트] 방 등록")
+    @DisplayName("[단위테스트] 방 수정")
     @Test
     public void update() {
         Long roomId = roomService.save(RoomSaveDto.builder()

@@ -5,11 +5,12 @@ import com.real_estate.domain.room.domain.RoomDeal;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.locationtech.jts.geom.Point;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Setter
 @Getter
 @NoArgsConstructor
 public class RoomResponseDto {
@@ -21,6 +22,7 @@ public class RoomResponseDto {
     private Double longitude;
     private Double latitude;
     private String roomCd;
+    private String roomCdName;
     private String status;
     private List<RoomDeal> roomDealList = new ArrayList<>();
 

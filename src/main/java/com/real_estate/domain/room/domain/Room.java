@@ -47,6 +47,9 @@ public class Room extends BaseEntity {
     @Column(nullable = false)
     private String roomCd;
 
+    @Transient
+    private String roomCdName;
+
     //계약상태
     @Column(nullable = false)
     private String status;

@@ -1,5 +1,6 @@
 package com.real_estate.domain.room.controller;
 
+import com.real_estate.domain.room.dto.RoomRequestDto;
 import com.real_estate.domain.room.dto.RoomSaveDto;
 import com.real_estate.domain.room.dto.RoomUpdateDto;
 import com.real_estate.domain.room.service.RoomService;
@@ -31,5 +32,10 @@ public class RoomController {
     @PostMapping("/room/get/{id}")
     public ResultAPI get(@PathVariable Long id) {
         return ResultSet.resultData(roomService.get(id));
+    }
+
+    @PostMapping("/room/getList")
+    public ResultAPI getList(@RequestBody RoomRequestDto requestDto) {
+        return ResultSet.resultList(roomService.getList(requestDto));
     }
 }
