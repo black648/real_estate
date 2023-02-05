@@ -5,9 +5,6 @@ import com.real_estate.global.utils.CommonUtil;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.locationtech.jts.geom.Point;
-
-import java.time.LocalDate;
 
 @Getter
 @NoArgsConstructor
@@ -20,10 +17,9 @@ public class RoomSaveDto {
     private Double latitude;
     private String roomCd;
     private String status;
-    private LocalDate deletedDate;
 
     @Builder
-    public RoomSaveDto(String name, Long memberId, String address, String addressInfo, Double longitude, Double latitude, String roomCd, String status, LocalDate deletedDate) {
+    public RoomSaveDto(String name, Long memberId, String address, String addressInfo, Double longitude, Double latitude, String roomCd, String status) {
         this.name = name;
         this.memberId = memberId;
         this.address = address;
@@ -32,7 +28,6 @@ public class RoomSaveDto {
         this.latitude = latitude;
         this.roomCd = roomCd;
         this.status = status;
-        this.deletedDate = deletedDate;
     }
 
     public Room toEntity() {
@@ -44,7 +39,6 @@ public class RoomSaveDto {
                 .location(CommonUtil.getLocation(longitude, latitude))
                 .roomCd(roomCd)
                 .status(status)
-                .deletedDate(deletedDate)
                 .build();
     }
 }

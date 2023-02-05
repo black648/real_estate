@@ -29,3 +29,13 @@ X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
   "roomCd" : "R00101",
   "status" : "Y"
 }
+
+### delete
+DELETE http://localhost:8080/room/delete/2
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}
+
+### get
+POST http://localhost:8080/room/get/2
+Content-Type: application/json
+X-AUTH-TOKEN: {{X-AUTH-TOKEN}}

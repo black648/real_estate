@@ -23,7 +23,7 @@ public class Room extends BaseEntity {
     private Long id;
 
     @OneToMany(mappedBy = "room", cascade = CascadeType.ALL, orphanRemoval = true)
-    private final List<RoomDeal> codeList = new ArrayList<>();
+    private final List<RoomDeal> roomDealList = new ArrayList<>();
 
     @Column(nullable = false)
     private String name;
